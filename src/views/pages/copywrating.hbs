@@ -1,0 +1,37 @@
+{{#each copywriting}}
+
+    <input type="checkbox" name="{{cw_name}}" id="{{id}}">
+    <div>
+        {{cw_name}}
+    </div>
+
+{{/each}}
+
+<script>
+
+    (async function(){
+        const dataNoProcess = await fetch(`localhost:4000/words/${1}`);
+        const data = await dataNoProcess.json();
+        console.log(data);
+    })()
+
+
+    {{!-- const inputs = document.querySelectorAll('input[type="checkbox"]');
+
+    inputs[0].addEventListener('click', async (e) => {
+        if(e.target.checked){
+            inputs.forEach((rem) => {
+                rem.checked = false;
+            })
+            e.target.checked = true;
+            const dataNoProcess = await fetch(`localhost:4000/words/${e.target.id}`);
+            const data = await dataNoProcess.json();
+            console.log(data);
+        }
+    }) --}}
+
+    {{!-- inputs.forEach((inp) => {
+        
+    })
+    console.log(inputs) --}}
+</script>

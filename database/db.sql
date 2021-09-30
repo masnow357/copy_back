@@ -1,0 +1,15 @@
+CREATE DATABASE IF NOT EXISTS database_max;
+
+USE database_max;
+
+CREATE TABLE IF NOT EXISTS copywriting(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    cw_name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS words(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    cw_id int(255) NOT NULL,
+    word VARCHAR(255) NOT NULL,
+    CONSTRAINT fk_words FOREIGN KEY (cw_id) REFERENCES copywriting(id)
+);
