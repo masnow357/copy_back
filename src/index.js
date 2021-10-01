@@ -1,5 +1,6 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
+const cors = require('cors')
 
 
 const morgan = require('morgan');
@@ -26,6 +27,7 @@ app.set('view engine', '.hbs');
 app.use(morgan('dev'))
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
+app.use(cors())
 
 // Global variables
 
