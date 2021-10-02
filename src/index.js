@@ -38,11 +38,21 @@ app.use((req, res, next) => {
 
 // Routes
 
-app.use(require('./routes'));
+// Copywriting routes
+
 app.use('/copywriting', require('./routes/copiwriting/get'))
 app.use('/copywriting', require('./routes/copiwriting/post'))
 app.use('/copywriting', require('./routes/copiwriting/put'))
 app.use('/copywriting', require('./routes/copiwriting/delete'))
+
+// Topic routes
+
+app.use('/topics', require('./routes/topics/get'))
+app.use('/topics', require('./routes/topics/post'))
+app.use('/topics', require('./routes/topics/put'))
+app.use('/topics', require('./routes/topics/delete'))
+
+
 
 // Public
 
