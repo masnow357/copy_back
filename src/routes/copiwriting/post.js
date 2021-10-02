@@ -4,7 +4,7 @@ const router = express.Router();
 
 const pool = require('../../database');
 
-router.post('/copywritingPost/:value', async (req, res) => {
+router.post('/:value', async (req, res) => {
 
     const {value} = await req.params;
 
@@ -13,7 +13,7 @@ router.post('/copywritingPost/:value', async (req, res) => {
     copywriting.serverStatus == 2 ? res.send('OK') : res.send('ERROR');
 })
 
-router.post('/wordsPost/:cw_id/:value', async (req, res) => {
+router.post('/words/:cw_id/:value', async (req, res) => {
 
     const {value, cw_id} = await req.params;
 

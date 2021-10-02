@@ -4,16 +4,28 @@ const router = express.Router();
 
 const pool = require('../../database');
 
-router.delete('/copywritingDelete/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
 
     const {id} = req.params;
 
-    const copywriting = await pool.query("DELETE FROM copywriting WHERE id = ?", [id.toString()]);
+    try {
 
-    copywriting.serverStatus == 2 ? res.send('OK') : res.send('ERROR');
+        const words = await pool.query("DELETE FROM words WHERE cw_id = ?", [id.toString()]);
+        const copywriting = await pool.query("DELETE FROM copywriting WHERE id = ?", [id.toString()]);
+
+        words.serverStatus == 2 && copywriting.serverStatus == 2 ? res.send('OK') : res.send('ERROR');
+
+    } catch (error) {
+        
+        console.log(error);
+        
+    }
+
+    
+
 })
 
-router.delete('/wordsDelete/:id', async (req, res) => {
+router.delete('/words/:id', async (req, res) => {
     
     const {id} = req.params;
 
