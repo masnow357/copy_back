@@ -39,6 +39,10 @@ app.use((req, res, next) => {
 // Routes
 
 app.use(require('./routes'));
+app.use('/copywriting', require('./routes/copiwriting/get'))
+app.use('/copywriting', require('./routes/copiwriting/post'))
+app.use('/copywriting', require('./routes/copiwriting/put'))
+app.use('/copywriting', require('./routes/copiwriting/delete'))
 
 // Public
 
