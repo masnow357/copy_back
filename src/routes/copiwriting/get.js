@@ -14,9 +14,17 @@ router.get('/', async (req, res) => {
 
 router.get('/words', async (req, res) => {
     
-    const words = await pool.query("SELECT * FROM words");
-    
-    res.json(words);
+    let words = await pool.query("SELECT * FROM words");
+
+    words = await Promise.all(
+        words.map(async word => {
+           const cw = await pool.query("SELECT cw_name FROM copywriting WHERE id = ?", [word.cw_id]);
+           word.cw = cw[0].cw_name
+           return word;
+       })
+    )
+
+    res.json(words)
 
 })
 

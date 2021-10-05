@@ -14,7 +14,16 @@ router.get('/', async (req, res) => {
 
 router.get('/key_ideas', async (req, res) => {
     
-    const key_ideas = await pool.query("SELECT * FROM key_ideas");
+    let key_ideas = await pool.query("SELECT * FROM key_ideas");
+
+    key_ideas = await Promise.all(
+        key_ideas.map(async word => {
+           const tp = await pool.query("SELECT topic_name FROM topics WHERE id = ?", [word.ki_id]);
+           word.tp = tp[0].topic_name
+           console.log(word);
+           return word;
+       })
+    )
     
     res.json(key_ideas);
 
