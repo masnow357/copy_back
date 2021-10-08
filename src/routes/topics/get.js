@@ -20,7 +20,6 @@ router.get('/key_ideas', async (req, res) => {
         key_ideas.map(async word => {
            const tp = await pool.query("SELECT topic_name FROM topics WHERE id = ?", [word.ki_id]);
            word.tp = tp[0].topic_name
-           console.log(word);
            return word;
        })
     )
