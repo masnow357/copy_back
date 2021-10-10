@@ -2,12 +2,15 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const cors = require('cors')
 
+const { seedDb } = require('./seed_db');
+
 
 const morgan = require('morgan');
 const path = require('path');
 // initializations
 
 const app = express();
+
 
 //settings
 
@@ -58,6 +61,9 @@ app.use('/topics', require('./routes/topics/delete'))
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+if (process.env.SEED) {
+    seedDb();
+}
 
 // Start server
 

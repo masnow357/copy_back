@@ -1,3 +1,11 @@
+## Seed the DB with test dat
+
+Use the _env var_ `SEED=true`. For instance:
+
+```sh
+SEED=true node src/index.js
+```
+
 ## Use MySQL on Docker
 
 Just run:
