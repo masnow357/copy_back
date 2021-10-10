@@ -38,6 +38,10 @@ app.use((req, res, next) => {
 
 // Routes
 
+app.get('/', (req, res) => {
+    res.render('pages/copywrating')
+})
+
 // Copywriting routes
 
 app.use('/copywriting', require('./routes/copiwriting/get'))
