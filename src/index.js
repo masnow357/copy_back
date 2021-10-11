@@ -52,6 +52,13 @@ app.use('/topics', require('./routes/topics/post'))
 app.use('/topics', require('./routes/topics/put'))
 app.use('/topics', require('./routes/topics/delete'))
 
+// Sentences Routes
+
+app.use('/sentences', require('./routes/sentences/get'))
+app.use('/sentences', require('./routes/sentences/post'))
+app.use('/sentences', require('./routes/sentences/delete'))
+app.use('/sentences', require('./routes/sentences/put'))
+
 
 
 // Public
